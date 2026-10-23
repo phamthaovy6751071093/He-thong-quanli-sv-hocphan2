@@ -19,3 +19,11 @@ typedef struct DanhSachSinhVien {
     int capacity;        
     int size;          
 } ds;
+// Khai báo nguyên mẫu các hàm
+void khoiTaoDanhSach(DanhSachSinhVien *dsList, int initial_capacity); // Pham Thao Vy phu trach
+void nhapDanhSach(DanhSachSinhVien *dsList);// Nguyen Chi Bao phu trach
+void xuatDanhSach(const DanhSachSinhVien *dsList); // Nguyen Ngoc Thuy phu trach
+void tinhGpaVaXepLoai(SinhVien *sv); // Le Thi Cam Tu phu trach
+void giaiPhongDanhSach(DanhSachSinhVien *dsList);
+
+#endif
