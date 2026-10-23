@@ -10,6 +10,18 @@ void xoaBoDem() {
     int c;
     while ((c = getchar()) != '\n' && c != EOF);
 }
+//chong tran bo nho va kiem tra do dai cua thong tin nhap vao
+void inputString(char *buffer, int length) {
+    if (fgets(buffer, length, stdin) != NULL) {
+        size_t len = strlen(buffer);
+        if (len > 0 && buffer[len - 1] == '\n') {
+            buffer[len - 1] = '\0';
+        } else {
+            clearInputBuffer();
+        }
+    }
+}
+
 
 // ==========================================================
 // PHAN CUA LE THI CAM TU: Tinh GPA, Xep loai hoc luc, Phan loai diem chu
