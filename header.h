@@ -6,26 +6,28 @@
 
 // struct luu tru sinh vien
 typedef struct SinhVien {
-    char maSV[10];       
+    char maSV[11];       
     char hoTen[50];     
     float diemGK;      
     float diemCK;       
     float gpa;          
     char diemChu[3];     
     char xepLoai[20];   
-} sv;
+} SinhVien;
 
 // quan li nhan vien
 typedef struct DanhSachSinhVien {
     SinhVien *data;      
     int capacity;        
     int size;          
-} ds;
-// Khai báo nguyên mẫu các hàm
-void khoiTaoDanhSach(DanhSachSinhVien *dsList, int initial_capacity); // Pham Thao Vy phu trach
-void nhapDanhSach(DanhSachSinhVien *dsList);// Nguyen Chi Bao phu trach
-void xuatDanhSach(const DanhSachSinhVien *dsList); // Nguyen Ngoc Thuy phu trach
-void tinhGpaVaXepLoai(SinhVien *sv); // Le Thi Cam Tu phu trach
-void giaiPhongDanhSach(DanhSachSinhVien *dsList);
+} DanhSachSinhVien;
+// Khai khai bao ham nhap, xuat va bo nho
+void initlist(DanhSachSinhVien *dsList, int initial_capacity); 
+void freelist(DanhSachSinhVien *dsList);
+void clearInputBuffer();
+void inputString(char *buffer, int length);
+SinhVien inputOneStudent(DanhSachSinhVien *list);
+void addStudent(DanhSachSinhVien *list, SinhVien sv);
+void printStudentList(DanhSachSinhVien list);
 
 #endif
