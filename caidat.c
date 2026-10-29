@@ -79,9 +79,7 @@ SinhVien inputOneStudent(DanhSachSinhVien *list) {
     return sv;
 
 
-// ==========================================================
 // PHAN CUA LE THI CAM TU: Tinh GPA, Xep loai hoc luc, Phan loai diem chu
-// ==========================================================
 void tinhGpaVaXepLoai(SinhVien *sv) {
     // Tinh diem GPA he so 10 (Giua ki 40%, Cuoi ky 60%)
     sv->gpa = (sv->diemGK * 0.4f) + (sv->diemCK * 0.6f);
