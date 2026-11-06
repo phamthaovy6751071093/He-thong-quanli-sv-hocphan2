@@ -1,33 +1,46 @@
-#ifndef STUDENT_H
-#define STUDENT_H
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
-// struct luu tru sinh vien
+#if defined(_WIN32) || defined(_WIN64)
+    #define strcasestr strstr
+#endif
+
+#define ACCOUNT_FILE "accounts.dat"
+#define STUDENT_FILE "students.dat"
+
+// Phân quyền hệ thống
+typedef enum { ROLE_ADMIN = 1, ROLE_STUDENT = 2 } Role;
+
+// Cấu trúc Lưu trữ Sinh Viên & Điểm Số
 typedef struct SinhVien {
-    char maSV[11];       
-    char hoTen[50];     
-    float diemGK;      
-    float diemCK;       
-    float gpa;          
-    char diemChu[3];     
-    char xepLoai[20];   
+    char maSV[11];
+    char hoTen[50];
+    float diemGK;
+    float diemCK;
+    float gpa;
+    char diemChu[3];
+    char xepLoai[20];
 } SinhVien;
 
-// quan li nhan vien
+// Cấu trúc Danh sách Sinh Viên (Mảng động)
 typedef struct DanhSachSinhVien {
-    SinhVien *data;      
-    int capacity;        
-    int size;          
+    SinhVien *data;
+    int capacity;
+    int size;
 } DanhSachSinhVien;
-// Khai khai bao ham nhap, xuat va bo nho
-void initlist(DanhSachSinhVien *dsList, int initial_capacity); 
-void freelist(DanhSachSinhVien *dsList);
-void clearInputBuffer();
-void inputString(char *buffer, int length);
-SinhVien inputOneStudent(DanhSachSinhVien *list);
-void addStudent(DanhSachSinhVien *list, SinhVien sv);
-void printStudentList(DanhSachSinhVien list);
 
-#endif
+// Cấu trúc Tài Khoản
+typedef struct TaiKhoan {
+    char username[30];
+    char password[30];
+    Role role;
+    char maSV[11]; // Liên kết với Ma SV nếu role == ROLE_STUDENT
+} TaiKhoan;
+
+// Cấu trúc Danh sách Tài Khoản (Mảng động)
+typedef struct DanhSachTaiKhoan {
+    TaiKhoan *data;
+    int capacity;
+    int size;
+} DanhSachTaiKhoan;
